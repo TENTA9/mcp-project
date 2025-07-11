@@ -1,0 +1,8 @@
+fastmcp
+langchain-mcp-adapters
+langchain
+langchain-openai
+psycopg2-binary
+pandas
+python-dotenv
+sqlalchemy
