@@ -1,0 +1,11 @@
+incident_id,discovery_dt,incident_source,location_id,product_id,component_id,defect_description,resolution_status
+1101,2025-07-10,CUSTOMER_RETURN,DEALER_SEOUL,SNTF-25-CL-AWD,P-404-BAT-LG,"주행 중 간헐적 시동 꺼짐 현상 발생",Closed
+1102,2025-07-11,IN_PROCESS,P1_ULSAN,MODEL-B-STD,P-505-CHIP,"최종 조립 공정에서 ECU 칩 불량 발견",Closed
+1103,2025-07-12,INBOUND,WH_SOUTH,MODEL-D-HYBRID,P-888-CHASSIS,"입고 검사 중 섀시 용접 불량",In_Progress
+1104,2025-07-13,CUSTOMER_RETURN,DEALER_BUSAN,MODEL-C-EV,P-515-MOTOR,"가속 시 이상 진동 및 소음",Open
+1105,2025-07-14,IN_PROCESS,P3_GWANGJU,MODEL-D-TRIM-A,P-234-SEAT,"시트 히터 불량 (작동 안됨)",Closed
+1106,2025-07-15,CUSTOMER_RETURN,DEALER_DAEGU,MODEL-B-LUXURY,P-737-SENSOR,"전방 레이더 센서 오작동 (경고등 점등)",Closed
+1107,2025-07-15,INBOUND,PORT_PYEONGTAEK,MODEL-A-STD,P-101-BAT,"배터리 모듈 충전 불량 입고",Open
+1108,2025-07-16,IN_PROCESS,P2_ASAN,MODEL-A-SPORT,P-505-CHIP,"생산 중 통신 이상으로 인한 공정 일시 중단",In_Progress
+1109,2025-07-17,CUSTOMER_RETURN,DEALER_GWANGJU,MODEL-D-TRIM-B,P-234-SEAT,"시트 방석 꺼짐 및 원단 파손",Open
+1110,2025-07-17,INBOUND,WH_MID,MODEL-C-TRIM2,P-626-INVERTER,"입고 부품 중 인버터 내 결로 발견",Closed

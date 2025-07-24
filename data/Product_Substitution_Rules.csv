@@ -1,0 +1,11 @@
+rule_id,source_product_id,target_product_id,substitution_rate_pct,rationale
+101,MODEL-B-PREMIUM,MODEL-B-LUXURY,60.00,사양 유사성 및 가격 근접성 기반
+102,MODEL-B-PREMIUM,MODEL-B-STD,20.00,가격 민감 고객 일부 표준 트림 이동
+103,MODEL-C-TRIM2,MODEL-C-EV,55.00,동일 플랫폼 내 EV 최상위 트림 선호
+104,MODEL-C-TRIM2,MODEL-C-TRIM4,25.00,트림2 단종 시 트림4로 이동 예상
+105,SNTF-2.5-PREMIUM,SNTF-25-CL-AWD,48.00,동일 라인업 내 상위 트림 선택 경향
+106,MODEL-C-TRIM4,MODEL-C-EV,50.00,트림4 단종 시 EV 전체 수요로 일부 전환
+107,MODEL-C-TRIM4,MODEL-C-TRIM2,30.00,가격 및 기능 유사성에 근거한 대체 이동
+108,MODEL-B-STD,MODEL-B-LUXURY,15.00,일부 고객 상향 이동
+109,MODEL-B-STD,MODEL-A-STD,25.00,유사 세단 내 타 모델로의 전환
+110,MODEL-A-SPORT,MODEL-A-STD,40.00,동일 기본 모델 내에서 이동 경향

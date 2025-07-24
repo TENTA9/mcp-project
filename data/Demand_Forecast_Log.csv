@@ -1,0 +1,14 @@
+log_id,log_ts,target_period,product_id,forecast_version,forecast_source,forecasted_qty,rationale
+1301,2025-07-15 9:00,Sep-25,SNTF-25-CL-AWD,1,AI_MODEL,1150,怨쇨굅 異붿꽭 諛?理쒓렐 ?먮ℓ 紐⑤찘? 諛섏쁺
+1302,2025-07-15 14:30,Sep-25,SNTF-25-CL-AWD,1,SALES_DEPT,1200,?꾨줈紐⑥뀡 怨꾪쉷 諛섏쁺. 8??留덉????대깽??湲곕?
+1303,2025-07-16 11:10,Sep-25,SNTF-25-CL-AWD,2,AI_MODEL,1180,理쒖떊 寃쎌웳??紐⑤뜽 異쒖떆 ?뺣낫 諛섏쁺
+1304,2025-07-16 17:50,Sep-25,SNTF-25-CL-AWD,2,SALES_DEPT,1220,?먮ℓ??異붽? 二쇰Ц ?붿껌 諛섏쁺
+1305,2025-07-17 9:05,Sep-25,SNTF-25-CL-AWD,3,FINAL_PLAN,1250,"理쒖쥌 議곗젙: ?꾨뀈 ?숆린 ?ㅼ쟻, ?ш퀬, ?좎감異쒖떆 ?쇱젙 怨좊젮"
+1306,2025-07-15 10:15,Sep-25,MODEL-C-EV,1,AI_MODEL,980,AI 紐⑤뜽 湲곕컲 ?덉륫
+1307,2025-07-15 14:40,Sep-25,MODEL-C-EV,1,SALES_DEPT,1100,"EV 罹좏럹???곹뼢 諛섏쁺, ?곸뾽? ?곹뼢 議곗젙"
+1308,2025-07-16 13:20,Sep-25,MODEL-C-EV,2,AI_MODEL,1050,?쒖옣 ?꾩껜 EV ?깆옣瑜?媛깆떊 諛섏쁺
+1309,2025-07-16 19:00,Sep-25,MODEL-C-EV,2,SALES_DEPT,1120,二쇱슂 ?쒕윭???ㅻ뜑 利앷?
+1310,2025-07-17 9:10,Sep-25,MODEL-C-EV,3,FINAL_PLAN,1150,"理쒖쥌 ?뺤젙: 二쇱슂 ?뺤콉 諛섏쁺, ?댁썡 ?ш퀬 怨좊젮"
+1311,2025-07-15 9:30,Sep-25,MODEL-B-STD,1,AI_MODEL,700,怨쇨굅 ?됯퇏?먮ℓ??諛?怨꾩젅??諛섏쁺
+1312,2025-07-16 15:00,Sep-25,MODEL-B-STD,2,AI_MODEL,750,二쇨컙 ?곗씠???낅뜲?댄듃
+1313,2025-07-17 8:50,Sep-25,MODEL-B-STD,3,FINAL_PLAN,780,理쒖쥌 ?뺤젙: ?곸뾽? ?쇰뱶諛?諛섏쁺

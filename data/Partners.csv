@@ -1,0 +1,12 @@
+partner_id,partner_name,partner_type,tier,address,quality_score,on_time_delivery_pct
+S-A,에이전자,SUPPLIER,1,경기도 수원시 영통구 삼성로 129,94,98.10
+S-B,엘지화학,SUPPLIER,2,충북 청주시 흥덕구 공단로 108,98,99.30
+S-C,삼성SDI,SUPPLIER,2,경기 수원시 영통구 광교로 105,96,96.80
+S-D,현대모터스,SUPPLIER,1,서울특별시 강남구 테헤란로 300,93,97.20
+S-E,효성중공업,SUPPLIER,1,서울특별시 마포구 마포대로 92,90,92.10
+S-F,세방전지,SUPPLIER,2,경기도 시흥시 공단1대로 250,89,93.40
+S-H,한국타이어,SUPPLIER,2,대전광역시 대덕구 신탄진로 321,92,97.90
+S-I,삼화콘덴서,SUPPLIER,2,충남 아산시 인주면 공장길 3,88,94.60
+C-1,대한통운,CARRIER,1,서울특별시 중구 세종대로 100,95,99.00
+C-2,한진,CARRIER,1,서울특별시 중구 통일로 10,93,98.50
+C-3,동부익스프레스,CARRIER,2,부산광역시 동구 중앙대로 150,91,97.10

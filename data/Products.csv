@@ -1,0 +1,18 @@
+product_id,product_name,base_model,trim_level,product_category,lifecycle_status,base_price,currency,standard_product_cost,end_of_service_date
+MODEL-A-STD,Model-A Standard,Model-A,Standard,Sedan,Active,32000000,KRW,29000000,2032-12-31
+MODEL-B-STD,Model-B Standard,Model-B,Standard,Sedan,Active,35000000,KRW,31000000,2031-12-31
+MODEL-B-PREMIUM,Model-B Premium,Model-B,Premium,Sedan,Phase-Out,42000000,KRW,37000000,2031-12-31
+MODEL-B-LUXURY,Model-B Luxury,Model-B,Luxury,Sedan,Active,48000000,KRW,41000000,2032-12-31
+MODEL-C-EV,Model-C Electric,Model-C,EV,EV,Active,53000000,KRW,46000000,2029-12-31
+MODEL-D-HYBRID,Model-D Hybrid,Model-D,Hybrid,SUV,Active,41000000,KRW,35000000,2030-12-31
+SNTF-25-CL-AWD,Santafe 2.5T Calligraphy AWD,Santafe,Calligraphy,SUV,Active,45000000,KRW,38500000,2030-12-31
+MODEL-X-LUXURY,Model-X Luxury,Model-X,Luxury,SUV,Active,65000000,KRW,54000000,2033-12-31
+SNTF-2.5-PREMIUM,Santafe 2.5 Premium,Santafe,Premium,SUV,Discontinued,43000000,KRW,36000000,2028-12-31
+MODEL-A-SPORT,Model-A Sport,Model-A,Sport,Sedan,Active,37000000,KRW,31000000,2032-12-31
+MODEL-C-TRIM2,Model-C Trim2,Model-C,Trim2,EV,Phase-Out,51000000,KRW,42000000,2029-12-31
+MODEL-C-TRIM4,Model-C Trim4,Model-C,Trim4,EV,Discontinued,50500000,KRW,41500000,2028-12-31
+MODEL-D-TRIM-A,Model-D Trim-A,Model-D,Trim-A,SUV,Active,40000000,KRW,35000000,2030-12-31
+MODEL-D-TRIM-B,Model-D Trim-B,Model-D,Trim-B,SUV,Active,42000000,KRW,37000000,2030-12-31
+IONIQ_6_Long_Range_AWD,IONIQ 6 Long Range AWD,IONIQ 6,Long Range AWD,EV,Active,58000000,KRW,50000000,2031-12-31
+GRND-35-EX-2WD,Grandeur 3.5 Exclusive 2WD,Grandeur,Exclusive,Sedan,Active,42000000,KRW,38000000,2032-12-31
+MODEL-B,Model-B,Model-B,Standard,Sedan,Active,35000000,KRW,31000000,2031-12-31

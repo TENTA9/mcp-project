@@ -1,0 +1,16 @@
+component_id,component_name,component_category,standard_cost,currency,unit_of_measure,is_critical_part,lifecycle_status,shelf_life_years
+P-404-BAT-LG,LG 리튬이온 배터리 모듈,전장 부품,25.50,USD,EA,true,Active,5
+P-404-BAT-ALT,삼성 리튬이온 배터리(대체품),전장 부품,24.00,USD,EA,true,Active,4
+P-505-CHIP,고성능 ECU 제어 칩,전장 부품,31.00,USD,EA,true,Discontinued,10
+P-515-MOTOR,고효율 주행 모터,구동계,60.00,USD,EA,true,Active,8
+P-626-INVERTER,동기 인버터,전장 부품,38.50,USD,EA,true,Active,5
+P-888-CHASSIS,초경량 섀시,샤시,41.20,USD,EA,false,Active,12
+P-123-NAV,차세대 내비게이션,전장 부품,12.00,USD,EA,false,Active,7
+P-234-SEAT,통풍 프리미엄 시트,샤시,9.80,USD,EA,false,Active,4
+P-737-SENSOR,고감도 레이더 센서,전장 부품,21.00,USD,EA,true,Active,6
+P-101-BAT,소형 리튬이온 셀,전장 부품,18.00,USD,EA,false,Active,3
+P-XYZ-CLIP-V2,강화형 클립(대체품),샤시,0.30,USD,EA,false,Active,15
+P-XYZ-CLIP,표준 클립,샤시,0.28,USD,EA,false,Discontinued,15
+P-DEF-HOSE,고압 연료 호스,구동계,7.20,USD,EA,false,Active,5
+P-OLD-RADIO,클래식 라디오,전장 부품,14.00,USD,EA,false,Discontinued,15
+P-ACC-HOLDER,컵홀더,샤시,2.00,USD,EA,false,Active,20

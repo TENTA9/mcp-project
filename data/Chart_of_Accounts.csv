@@ -1,0 +1,13 @@
+account_id,account_name,parent_account_id,display_sequence,is_calculated_field,calculation_formula,account_type
+REVENUE,매출,,"100",false,,INCOME
+COGS,매출원가,,"200",false,,EXPENSE
+GROSS_PROFIT,매출 총이익,,"300",true,[REVENUE] - [COGS],INCOME
+OPERATING_EXPENSE,영업비용,,"400",false,,EXPENSE
+OPERATING_PROFIT,영업이익,,"500",true,[GROSS_PROFIT] - [OPERATING_EXPENSE],INCOME
+INTEREST_EXPENSE,이자비용,,"600",false,,EXPENSE
+PRETAX_PROFIT,법인세차감전이익,,"700",true,[OPERATING_PROFIT] - [INTEREST_EXPENSE],INCOME
+INCOME_TAX,법인세,,"800",false,,EXPENSE
+NET_PROFIT,당기순이익,,"900",true,[PRETAX_PROFIT] - [INCOME_TAX],INCOME
+INVENTORY,재고자산,,"1000",false,,ASSET
+ACCOUNTS_RECEIVABLE,매출채권,,"1010",false,,ASSET
+ACCOUNTS_PAYABLE,매입채무,,"1020",false,,LIABILITY

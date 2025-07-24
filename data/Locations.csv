@@ -1,0 +1,16 @@
+location_id,location_name,location_type,address,dock_capacity,operating_hours,avg_handling_hr,handling_cost_per_unit
+DEALER_GANGNAM,강남딜러,DEALER,서울특별시 강남구 테헤란로 456,8,09:00-21:00,0.7,230.00
+P1_ULSAN,현대자동차 울산 1공장,PLANT,울산광역시 북구 염포로 700,40,24/7,2.0,1300.00
+DEALER_DAEGU,대구딜러,DEALER,대구광역시 동구 동대구로 540,6,09:00-19:00,1.0,250.00
+HUB_CENTRAL,중앙허브,WAREHOUSE,서울특별시 구로구 중앙산업로 100,65,24/7,1.6,1050.00
+DEALER_INCHEON,인천딜러,DEALER,인천광역시 남동구 경인로 99,7,09:00-20:00,0.8,210.00
+P2_ASAN,현대자동차 아산공장,PLANT,충청남도 아산시 인주면 공단로 200,35,24/7,2.2,1200.00
+DEALER_JEJU,제주딜러,DEALER,제주특별자치도 제주시 중산간동로 12,4,09:00-19:00,1.0,240.00
+WAREHOUSE_SOUTH,남부창고,WAREHOUSE,부산광역시 국도 501,40,08:00-20:00,1.6,950.00
+DEALER_BUSAN,부산딜러,DEALER,부산광역시 해운대구 해운대로 575,7,09:00-20:00,0.8,200.00
+DEALER_GWANGJU,광주딜러,DEALER,광주광역시 서구 상무대로 950,5,09:00-19:00,0.9,220.00
+PLANT_HQ,본사공장,PLANT,서울특별시 서초구 HQ로 1,45,24/7,2.1,1250.00
+DEALER_DAEJEON,대전딜러,DEALER,대전광역시 서구 둔산로 10,6,09:00-19:00,1.0,235.00
+PLANT_MAIN,메인공장,PLANT,경기도 시흥시 메인산단로 77,38,24/7,2.2,1200.00
+DEALER_SUWON,수원딜러,DEALER,경기도 수원시 권선구 권선로 85,7,09:00-20:00,0.8,215.00
+DEALER_A,A딜러,DEALER,서울특별시 강서구 테스트로 1,5,09:00-19:00,1.0,220.00

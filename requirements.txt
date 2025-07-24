@@ -6,3 +6,5 @@ psycopg2-binary
 pandas
 python-dotenv
 sqlalchemy
+langchain-chroma
+chromadb

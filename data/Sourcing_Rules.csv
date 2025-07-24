@@ -1,0 +1,18 @@
+sourcing_id,component_id,partner_id,is_primary_supplier,volume_pricing_json,unit_price,currency,min_order_qty,lead_time_days,committed_capacity_monthly,max_capacity_monthly
+5001,P-404-BAT-LG,S-B,true,"{""tiers"": [{""min_qty"": 10000, ""price"": 25.50}, {""min_qty"": 50000, ""price"": 24.00}, {""min_qty"": 100000, ""price"": 22.50}]}",25.50,USD,10000,30,50000,80000
+5002,P-404-BAT-LG,S-C,false,"{""tiers"": [{""min_qty"": 10000, ""price"": 25.80}, {""min_qty"": 50000, ""price"": 24.50}]}",25.80,USD,10000,40,20000,40000
+5003,P-404-BAT-ALT,S-C,true,"{""tiers"": [{""min_qty"": 10000, ""price"": 24.00}, {""min_qty"": 50000, ""price"": 23.00}]}",24.00,USD,10000,35,40000,60000
+5004,P-505-CHIP,S-A,true,"{""tiers"": [{""min_qty"": 5000, ""price"": 31.00}]}",31.00,USD,5000,45,10000,15000
+5005,P-515-MOTOR,S-E,true,"{""tiers"": [{""min_qty"": 1000, ""price"": 60.00}, {""min_qty"": 5000, ""price"": 59.00}]}",60.00,USD,1000,21,8000,10000
+5006,P-515-MOTOR,S-F,false,"{""tiers"": [{""min_qty"": 2000, ""price"": 60.50}, {""min_qty"": 5000, ""price"": 59.50}]}",60.50,USD,2000,25,4000,6000
+5007,P-626-INVERTER,S-B,true,"{""tiers"": [{""min_qty"": 5000, ""price"": 38.50}, {""min_qty"": 20000, ""price"": 37.00}]}",38.50,USD,5000,20,15000,25000
+5008,P-888-CHASSIS,S-H,true,"{""tiers"": [{""min_qty"": 2000, ""price"": 41.20}]}",41.20,USD,2000,18,10000,20000
+5009,P-123-NAV,S-D,true,"{""tiers"": [{""min_qty"": 500, ""price"": 12.00}]}",12.00,USD,500,7,4000,8000
+5010,P-234-SEAT,S-E,true,"{""tiers"": [{""min_qty"": 1000, ""price"": 9.80}, {""min_qty"": 5000, ""price"": 9.20}]}",9.80,USD,1000,12,10000,18000
+5011,P-737-SENSOR,S-I,true,"{""tiers"": [{""min_qty"": 2000, ""price"": 21.00}, {""min_qty"": 8000, ""price"": 20.30}]}",21.00,USD,2000,15,6000,9000
+5012,P-101-BAT,S-B,true,"{""tiers"": [{""min_qty"": 5000, ""price"": 18.00}]}",18.00,USD,5000,10,8000,12000
+5013,P-XYZ-CLIP,S-H,true,"{""tiers"": [{""min_qty"": 50000, ""price"": 0.28}]}",0.28,USD,50000,12,100000,150000
+5014,P-XYZ-CLIP-V2,S-H,true,"{""tiers"": [{""min_qty"": 20000, ""price"": 0.30}]}",0.30,USD,20000,10,90000,120000
+5015,P-DEF-HOSE,S-E,true,"{""tiers"": [{""min_qty"": 1000, ""price"": 7.20}, {""min_qty"": 5000, ""price"": 7.00}]}",7.20,USD,1000,8,5000,9000
+5016,P-OLD-RADIO,S-A,true,"{""tiers"": [{""min_qty"": 1000, ""price"": 14.00}]}",14.00,USD,1000,28,3000,5000
+5017,P-ACC-HOLDER,S-E,true,"{""tiers"": [{""min_qty"": 3000, ""price"": 2.00}]}",2.00,USD,3000,6,10000,20000
