@@ -4,6 +4,7 @@ from pydantic import BaseModel, Field
 import os
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
+import numpy as np
 
 load_dotenv()
 
@@ -12,16 +13,19 @@ mcp = FastMCP("PythonServer", log_level="INFO")
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
 
 class T1Output(BaseModel):
+    # Senario 1
     product_id: str = Field(..., description="Product/Model ID to be transferred")
     requesting_loc_id: str = Field(..., description="Receiving location ID (Dealer etc.)")
     supplying_loc_id: str = Field(..., description="Sending location ID (Plant, Hub etc.)")
 
 class T2Output(BaseModel):
+    # Senario 2
     product_id: str = Field(..., description="Product/Model ID to be produced")
     requested_qty: int = Field(..., description="Requested production quantity")
     due_date: str = Field(..., description="Requested completion or delivery date")
 
 class T3Output(BaseModel):
+    # Senario 3
     product_id: str = Field(..., description="Product/Model ID")
     target_period: str = Field(..., description="Forecast period (date or week etc.)")
     upcoming_campaigns: str = Field(..., description="Relevant marketing campaigns in period")
@@ -44,6 +48,24 @@ def user_intent_parser(task: str, query: str) -> Dict[str, Any]:
     llm_structured = llm.with_structured_output(output_schema)
     result = llm_structured.invoke(query)
     return result.model_dump()
+
+@mcp.tool()
+def montecarlo_transfer_optimizer(mean: float, standard_deviation: float, quantity_on_hand: int) -> Dict[str, Any]:
+    """
+    A function that calculates the cost for each inventory quantity and extracts the optimal quantity value that results in the minimum cost.
+    """
+    min_y = float('inf')
+    optimal_q = 0 
+
+    for q in range(0, quantity_on_hand + 1): 
+        
+        current_y = (q - mean * 10)**2 + standard_deviation * np.cos(q / (mean + 1e-6))
+        
+        if current_y < min_y:
+            min_y = current_y
+            optimal_q = q
+            
+    return {"optimal_transfer_quantity": optimal_q}
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")
