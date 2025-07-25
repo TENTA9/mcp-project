@@ -146,7 +146,7 @@ def read_bill_of_materials(product_id: str) -> List[Dict[str, Any]]:
             return cur.fetchall()      
         
 @mcp.tool()
-def read_inventory_history(component_ids: List[str]) -> List[Dict[str, Any]]:
+def read_inventory_history_by_components(component_ids: List[str]) -> List[Dict[str, Any]]:
     """
     Retrieves the entire inventory history for a given list of component IDs.
     
