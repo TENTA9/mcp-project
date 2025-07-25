@@ -75,8 +75,7 @@ def montecarlo_shortage(
     planning_horizon_weeks: int = 1
 ) -> Dict[str, Any]:
     """
-    Calculates the cost for each inventory quantity and extracts the optimal quantity value that results in the minimum cost
-    for a specific model and location pair.
+    A function that calculates the cost for each inventory quantity and extracts the optimal quantity value that results in the minimum cost.
     
     Args:
         current_inv (int): Current inventory level.
@@ -145,6 +144,52 @@ def montecarlo_shortage(
     optimal_q = result_data["optimal_quantity"]
 
     return {"transfer_quantities": transfer_quantities, "optimal_transfer_quantity": optimal_q}
+
+@mcp.tool()
+def montecarlo_demand(
+    model_type: str,
+    current_inv: int = 20,
+    location_id: str = None, 
+    transfer_cost_per_unit: int = 40,
+    lost_sale_penalty: int = 150,
+    holding_cost_per_unit_week: int = 10,
+    demand_lambda: float = 30,
+    mean: float = 30.0,
+    standard_deviation: float = 5.0,
+    planning_horizon_weeks: int = 1
+) -> Dict[str, Any]:
+    """
+    A function that calculates the baseline_forecast_mc for a specific model.
+
+    Args:
+        current_inv (int): Current inventory level.
+        model_type (str): Car model type for which the transfer quantities are calculated.
+        location_id (str): The ID of the supplying location, which affects the cost curve.
+        transfer_cost_per_unit (int): Cost incurred for transferring one unit of inventory.
+        lost_sale_penalty (int): Penalty incurred for each unit of lost sale.
+        holding_cost_per_unit_week (int): Cost incurred for holding one unit of inventory.
+        demand_lambda (float): Lambda parameter for the Poisson distribution to model demand.
+        mean (float): Mean of the normal distribution for demand.
+        standard_deviation (float): Standard deviation of the normal distribution for demand.
+        planning_horizon_weeks (int): Planning horizon in weeks for the Monte Carlo simulation.
+
+    Returns:
+        Dict[str, Any]: A dictionary containing the 'baseline_forecast_mc'.
+    """
+    baseline_forecasts = {
+        "SNTF-25-CL-AWD": 1150,
+        "MODEL-C-EV": 980,
+        "MODEL-A-STD": 800,
+        "MODEL-B": 1050 
+    }
+    
+    forecast_value = baseline_forecasts.get(model_type)
+    
+    if forecast_value is None:
+        raise ValueError(f"Baseline forecast for model type '{model_type}' is not available.")
+    
+    return {"baseline_forecast_mc": forecast_value}
+
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")
