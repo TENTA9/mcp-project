@@ -27,9 +27,18 @@ class PostgresConnection:
             self.conn.close()
 
 @mcp.tool()
-def calculate_sales_history(product_id: str, location_id: str) -> List[Dict[str, Any]]:
+def calculate_sales_history(product_id: Optional[str] = None, location_id: Optional[str] = None) -> List[Dict[str, Any]]:
     """
-    Calculates the mean and standard deviation of units sold for a specific product at a specific location from the sales history.
+    Calculates sales statistics (mean and standard deviation) from 'Sales History' data. 
+    Can be filtered by product_id and/or location_id.
+
+    Args:
+        product_id (Optional[str]): The unique identifier for the product to filter by.
+        location_id (Optional[str]): The unique identifier for the sales location to filter by.
+    
+    Returns:
+        List[Dict[str, Any]]: A list containing a single dictionary with the calculated 'mean' and 
+                             'standard_deviation' for the filtered sales data.
     """
     query = """
         SELECT 
@@ -37,19 +46,34 @@ def calculate_sales_history(product_id: str, location_id: str) -> List[Dict[str,
             COALESCE(STDDEV(units_sold), 0) AS standard_deviation
         FROM 
             Sales_History
-        WHERE 
-            product_id = %s AND location_id = %s;
+        WHERE 1=1
     """
-    params = (product_id, location_id)
+    params = []
+    if product_id:
+        query += " AND product_id = %s"
+        params.append(product_id)
+        
+    if location_id:
+        query += " AND location_id = %s"
+        params.append(location_id)
+        
     with PostgresConnection(DB_PARAMS) as conn:
         with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
-            cur.execute(query, params)
+            cur.execute(query, tuple(params))
             return cur.fetchall()
 
 @mcp.tool()
 def read_inventory_history(item_id: str, location_id: str) -> List[Dict[str, Any]]:
     """
     Reads the most recent inventory quantity for a specific item at a specific location.
+
+    Args:
+        item_id (str): The ID of the product or component to look up (e.g., 'MODEL-C-EV', 'P-404-BAT-LG').
+        location_id (str): The ID of the location where the inventory is located (e.g., 'P1_ULSAN', 'DEALER_SEOUL').
+        
+    Returns:
+        List[Dict[str, Any]]: A list containing a single dictionary with the latest 'quantity_on_hand'. 
+                             Returns an empty list if no record is found.
     """
     query = """
         SELECT 
@@ -71,13 +95,25 @@ def read_inventory_history(item_id: str, location_id: str) -> List[Dict[str, Any
 @mcp.tool()
 def read_products(product_id: str) -> List[Dict[str, Any]]:
     """
-    Retrieves all information for a specific product using its product_id.
+    Retrieves detailed master data for a specific product using its product_id.
     
     Args:
-        product_id: The unique ID of the product to retrieve.
+        product_id (str): The unique ID (SKU) of the product to retrieve.
         
     Returns:
-        A list containing a single dictionary with the product's full details.
+        A list containing a single dictionary with the product's full details. 
+        The dictionary includes the following keys:
+        - product_id
+        - product_name
+        - base_model
+        - trim_level
+        - product_category
+        - lifecycle_status
+        - base_price
+        - currency
+        - standard_product_cost
+        - end_of_service_date
+        - standard_production_time_hours
     """
     query = "SELECT * FROM Products WHERE product_id = %s;"
     params = (product_id,)
@@ -129,14 +165,19 @@ def read_production_capacity(product_id: str, requested_qty: int, due_date: str)
 @mcp.tool()        
 def read_bill_of_materials(product_id: str) -> List[Dict[str, Any]]:
     """
-    Retrieves the entire Bill of Materials (BOM) for a specific product_id.
-    This lists all components and their quantities needed to build the product.
+    Retrieves the entire Bill of Materials (BOM) for a specific product_id, listing all components and their quantities needed.
     
     Args:
-        product_id: The unique ID of the final product.
+        product_id (str): The unique ID of the final product for which to retrieve the BOM.
         
     Returns:
-        A list of dictionaries, where each dictionary represents a component line in the BOM.
+        A list of dictionaries, where each dictionary represents a component line in the BOM. 
+        The dictionary includes the following keys:
+        - bom_line_id
+        - product_id
+        - component_id
+        - quantity_per_unit
+        - is_critical_in_bom
     """
     query = "SELECT * FROM Bill_of_Materials WHERE product_id = %s;"
     params = (product_id,)
@@ -148,15 +189,22 @@ def read_bill_of_materials(product_id: str) -> List[Dict[str, Any]]:
 @mcp.tool()
 def read_inventory_history_by_components(component_ids: List[str]) -> List[Dict[str, Any]]:
     """
-    Retrieves the entire inventory history for a given list of component IDs.
+    Retrieves the entire inventory history (all snapshots across all dates) for a given list of component IDs.
     
     Args:
-        component_ids: A list of component IDs to search for (e.g., ['P-404-BAT-LG', 'P-505-CHIP']).
-                       To search for a single component, provide a list with one item.
+        component_ids (List[str]): A list of component IDs to search for (e.g., ['P-404-BAT-LG', 'P-505-CHIP']).
+                                   To search for a single component, it must be provided in a list.
         
     Returns:
-        A list of dictionaries, where each dictionary is a row from the inventory history 
-        matching any of the provided component IDs.
+        A list of dictionaries, where each dictionary is a historical inventory record. 
+        Each dictionary includes the following keys:
+        - snapshot_id
+        - snapshot_ts
+        - location_id
+        - item_id
+        - item_type
+        - quantity_on_hand
+        - inventory_status
     """
     query = """
         SELECT 
@@ -182,8 +230,18 @@ def read_purchase_order_lines(component_ids: List[str]) -> List[Dict[str, Any]]:
                        To search for a single component, provide a list with one item.
         
     Returns:
-        A list of dictionaries, where each dictionary is an open purchase order line
-        matching any of the provided component IDs.
+        A list of dictionaries, where each dictionary is an open purchase order line.
+        Each dictionary includes the following keys:
+        - po_line_id
+        - po_id
+        - sourcing_id
+        - component_id
+        - quantity_ordered
+        - quantity_received
+        - unit_price
+        - line_total_value
+        - line_status
+        - expected_line_delivery_dt
     """
     query = """
         SELECT 
@@ -202,12 +260,25 @@ def read_purchase_order_lines(component_ids: List[str]) -> List[Dict[str, Any]]:
 def read_sourcing_rules(shortages: List[str]) -> List[Dict[str, Any]]:
     """
     Retrieves sourcing rules for a given list of component IDs.
+    This tool provides information about suppliers, pricing, lead times, and capacity for specific components.
 
     Args:
-        shortages: A list of component_ids for which to find sourcing rules.
+        shortages (List[str]): A list of component_ids for which to find sourcing rules.
         
     Returns:
         A list of dictionaries containing the sourcing rules for the specified components.
+        Each dictionary includes the following keys:
+        - sourcing_id
+        - component_id
+        - partner_id
+        - is_primary_supplier
+        - volume_pricing_json
+        - unit_price
+        - currency
+        - min_order_qty
+        - lead_time_days
+        - committed_capacity_monthly
+        - max_capacity_monthly
     """
     query = """
         SELECT 
@@ -221,6 +292,41 @@ def read_sourcing_rules(shortages: List[str]) -> List[Dict[str, Any]]:
         with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
             cur.execute(query, params)
             return cur.fetchall()
+        
+@mcp.tool()
+def read_marketing_campaigns(product_id: str, upcoming_campaigns: List[str], baseline_forecast_mc: int) -> List[Dict[str, Any]]:
+    """
+    Calculates the expected sales uplift quantity from specified marketing campaigns.
+
+    Args:
+        product_id: The ID of the product to forecast.
+        upcoming_campaigns: A list of campaign names active in the target period.
+        baseline_forecast_mc: The baseline demand forecast before applying campaign effects.
+        
+    Returns:
+        A list containing a single dictionary with the calculated 'campaign_uplift_qty'.
+    """
+    query = """
+        SELECT 
+            COALESCE(SUM(predicted_uplift_pct), 0) as total_uplift_pct
+        FROM 
+            Marketing_Campaigns
+        WHERE 
+            target_product_id = %s AND campaign_name = ANY(%s);
+    """
+    params = (product_id, upcoming_campaigns)
+    
+    total_uplift_pct = 0
+    with PostgresConnection(DB_PARAMS) as conn:
+        with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
+            cur.execute(query, params)
+            result = cur.fetchone()
+            if result:
+                total_uplift_pct = result['total_uplift_pct']
+
+    campaign_uplift_quantity = baseline_forecast_mc * (total_uplift_pct / 100)
+    
+    return [{"campaign_uplift_qty": int(campaign_uplift_quantity)}]
 
 
 if __name__ == "__main__":
