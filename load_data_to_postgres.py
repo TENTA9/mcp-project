@@ -26,14 +26,10 @@ def setup_database():
         incentive_programs,
         chart_of_accounts,
         partners,
+        production_capacity,
         locations,
         components,
-        products,
-        fact_trim_perf,
-        dim_dealer,
-        dim_trim,
-        dim_model,
-        dim_region
+        products
     CASCADE;
 
     CREATE TABLE products (
@@ -46,7 +42,8 @@ def setup_database():
         base_price NUMERIC(14,2),
         currency VARCHAR(10),
         standard_product_cost NUMERIC(14,2),
-        end_of_service_date DATE
+        end_of_service_date DATE,
+        standard_production_time_hours INT
     );
 
     CREATE TABLE components (
@@ -272,6 +269,15 @@ def setup_database():
         incentive_id VARCHAR(30),
         redeemed_ts TIMESTAMP
     );
+    
+    CREATE TABLE production_capacity (
+        capacity_id BIGINT PRIMARY KEY,
+        location_id VARCHAR(30),
+        capacity_date DATE,
+        total_capacity_hours NUMERIC(5,2),
+        scheduled_hours NUMERIC(5,2),
+        available_hours NUMERIC(5,2)
+    );
     """
 
     csv_to_table_map = {
@@ -296,7 +302,8 @@ def setup_database():
         './data/purchase_order_header.csv': 'purchase_order_header',
         './data/purchase_order_lines.csv': 'purchase_order_lines',
         './data/internal_transfer_orders.csv': 'internal_transfer_orders',
-        './data/sales_incentive_map.csv': 'sales_incentive_map'
+        './data/sales_incentive_map.csv': 'sales_incentive_map',
+        './data/production_capacity.csv': 'production_capacity'
     }
 
     with engine.connect() as conn:
