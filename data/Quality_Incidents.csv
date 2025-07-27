@@ -1,11 +1,31 @@
 incident_id,discovery_dt,incident_source,location_id,product_id,component_id,defect_description,resolution_status
-1101,2025-07-10,CUSTOMER_RETURN,DEALER_SEOUL,SNTF-25-CL-AWD,P-404-BAT-LG,"주행 중 간헐적 시동 꺼짐 현상 발생",Closed
-1102,2025-07-11,IN_PROCESS,P1_ULSAN,MODEL-B-STD,P-505-CHIP,"최종 조립 공정에서 ECU 칩 불량 발견",Closed
-1103,2025-07-12,INBOUND,WH_SOUTH,MODEL-D-HYBRID,P-888-CHASSIS,"입고 검사 중 섀시 용접 불량",In_Progress
-1104,2025-07-13,CUSTOMER_RETURN,DEALER_BUSAN,MODEL-C-EV,P-515-MOTOR,"가속 시 이상 진동 및 소음",Open
-1105,2025-07-14,IN_PROCESS,P3_GWANGJU,MODEL-D-TRIM-A,P-234-SEAT,"시트 히터 불량 (작동 안됨)",Closed
-1106,2025-07-15,CUSTOMER_RETURN,DEALER_DAEGU,MODEL-B-LUXURY,P-737-SENSOR,"전방 레이더 센서 오작동 (경고등 점등)",Closed
-1107,2025-07-15,INBOUND,PORT_PYEONGTAEK,MODEL-A-STD,P-101-BAT,"배터리 모듈 충전 불량 입고",Open
-1108,2025-07-16,IN_PROCESS,P2_ASAN,MODEL-A-SPORT,P-505-CHIP,"생산 중 통신 이상으로 인한 공정 일시 중단",In_Progress
-1109,2025-07-17,CUSTOMER_RETURN,DEALER_GWANGJU,MODEL-D-TRIM-B,P-234-SEAT,"시트 방석 꺼짐 및 원단 파손",Open
-1110,2025-07-17,INBOUND,WH_MID,MODEL-C-TRIM2,P-626-INVERTER,"입고 부품 중 인버터 내 결로 발견",Closed
+1101,2025-01-15,CUSTOMER_RETURN,DEALER_GANGNAM,MODEL-C-EV,P-404-BAT-LG,"Battery module overheating issue",Closed
+1102,2025-02-03,IN_PROCESS,P1_ULSAN,MODEL-C-EV,P-626-INVERTER,"Inverter connection failure during assembly",In_Progress
+1103,2025-03-10,INBOUND,WH_SOUTH,MODEL-C-EV,P-515-MOTOR,"Motor housing scratch found upon arrival",Open
+1104,2025-04-22,CUSTOMER_RETURN,DEALER_BUSAN,MODEL-C-EV,P-888-CHASSIS,"Unusual noise from chassis at low speeds",Closed
+1105,2025-05-18,IN_PROCESS,P2_ASAN,MODEL-D-HYBRID,P-404-BAT-LG,"Battery voltage out of spec during testing",Closed
+1106,2025-06-01,CUSTOMER_RETURN,DEALER_DAEGU,MODEL-D-HYBRID,P-515-MOTOR,"Reduced motor power under heavy load",In_Progress
+1107,2025-07-05,INBOUND,P3_GWANGJU,MODEL-B-STD,P-101-BAT,"Incoming battery batch with low charge",Closed
+1108,2025-01-20,IN_PROCESS,P1_ULSAN,MODEL-B-STD,P-505-CHIP,"ECU chip not responding during software flash",Open
+1109,2025-02-14,CUSTOMER_RETURN,DEALER_INCHEON,MODEL-B-STD,P-888-CHASSIS,"Suspension bolt looseness",In_Progress
+1110,2025-03-28,INBOUND,WH_MID,MODEL-B-PREMIUM,P-101-BAT,"Damaged battery casings in shipment",Closed
+1111,2025-04-19,CUSTOMER_RETURN,DEALER_JEJU,MODEL-B-PREMIUM,P-737-SENSOR,"ACC sensor malfunction in rainy weather",Closed
+1112,2025-05-09,IN_PROCESS,P2_ASAN,MODEL-B-LUXURY,P-505-CHIP,"Chip soldering defect found in QA",Open
+1113,2025-06-11,CUSTOMER_RETURN,DEALER_GWANGJU,MODEL-B-LUXURY,P-234-SEAT,"Seat ventilation fan noise",In_Progress
+1114,2025-07-13,INBOUND,P1_ULSAN,MODEL-A-STD,P-101-BAT,"Battery batch failed capacity test",Closed
+1115,2025-01-25,IN_PROCESS,P2_ASAN,MODEL-A-SPORT,P-505-CHIP,"Incorrect chip version mounted on board",Closed
+1116,2025-02-18,CUSTOMER_RETURN,DEALER_DAEJEON,SNTF-25-CL-AWD,P-404-BAT-LG,"Sudden power loss while driving",Open
+1117,2025-03-17,INBOUND,P1_ULSAN,SNTF-25-CL-AWD,P-626-INVERTER,"Inverter coolant leak detected",In_Progress
+1118,2025-04-04,CUSTOMER_RETURN,DEALER_SUWON,SNTF-2.5-PREMIUM,P-404-BAT-LG,"Battery drain issue reported",Closed
+1119,2025-05-29,IN_PROCESS,P1_ULSAN,MODEL-C-TRIM2,P-123-NAV,"Navigation screen flickering during test",Open
+1120,2025-06-20,CUSTOMER_RETURN,DEALER_A,MODEL-X-LUXURY,P-404-BAT-ALT,"Alternative battery not holding charge",In_Progress
+1121,2025-07-22,INBOUND,P2_ASAN,MODEL-X-LUXURY,P-737-SENSOR,"Radar sensor DOA (Dead on Arrival)",Closed
+1122,2025-01-18,IN_PROCESS,P3_GWANGJU,MODEL-D-TRIM-A,P-626-INVERTER,"Inverter software bug found",Open
+1123,2025-02-25,CUSTOMER_RETURN,DEALER_GANGNAM,MODEL-C-EV,P-404-BAT-LG,"Charging error with specific charger types",In_Progress
+1124,2025-03-30,IN_PROCESS,P1_ULSAN,SNTF-25-CL-AWD,P-404-BAT-LG,"Inconsistent cell voltage in battery packs",Closed
+1125,2025-04-15,CUSTOMER_RETURN,DEALER_SEOUL,MODEL-B-LUXURY,P-101-BAT,"Car fails to start in cold weather",Open
+1126,2025-05-16,INBOUND,WH_SOUTH,MODEL-D-HYBRID,P-404-BAT-LG,"Physical damage to battery modules upon receipt",In_Progress
+1127,2025-06-18,CUSTOMER_RETURN,DEALER_DAEGU,MODEL-B-STD,P-505-CHIP,"Dashboard warning lights randomly appear",Closed
+1128,2025-07-20,IN_PROCESS,P2_ASAN,MODEL-A-SPORT,P-234-SEAT,"Stitching errors on premium seats",Open
+1129,2025-04-25,INBOUND,P1_ULSAN,MODEL-C-TRIM4,P-404-BAT-LG,"Incorrect battery type delivered for phase-out model",Closed
+1130,2025-05-28,CUSTOMER_RETURN,DEALER_BUSAN,GRND-35-EX-2WD,P-101-BAT,"Auxiliary battery drain",In_Progress
