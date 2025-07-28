@@ -458,53 +458,6 @@ def identify_efficiency_outliers(
 def simulate_financial_impact(
     optimal_simulation_parameters: Dict[str, Any],
     trim_performance_data: List[Dict[str, Any]],
-    period: str
-) -> Dict[str, Any]:
-    """
-    Simulates the net financial margin impact of a proposed production shift between two trims.
-
-    Args:
-        optimal_simulation_parameters: The output from 'calculate_optimal_shift', containing the
-                                       reduce/reallocate targets and quantities.
-        trim_performance_data: The output from 'aggregate_trim_performance', containing the unit margin
-                               for each trim.
-        period: The period for which the simulation is being run (for context).
-
-    Returns:
-        A dictionary with the 'simulation_result', detailing the margin changes and the net impact.
-    """
-    reduce_target = optimal_simulation_parameters['reduce_target']
-    reallocate_to = optimal_simulation_parameters['reallocate_to']
-    
-    reduce_id = reduce_target['product_id']
-    reduce_qty = reduce_target['quantity']
-    reallocate_id = reallocate_to['product_id']
-    reallocate_qty = reallocate_to['quantity']
-
-    margin_map = {trim['product_id']: float(trim['unit_margin']) for trim in trim_performance_data}
-
-    reduce_margin = margin_map.get(reduce_id, 0)
-    reallocate_margin = margin_map.get(reallocate_id, 0)
-
-    margin_change_from_reduction = reduce_qty * reduce_margin
-    margin_change_from_reallocation = reallocate_qty * reallocate_margin
-    net_margin_impact = margin_change_from_reallocation + margin_change_from_reduction
-
-    result_key_reduction = f"margin_change_from_{reduce_id}"
-    result_key_reallocation = f"margin_change_from_{reallocate_id}"
-    
-    simulation_result = {
-        result_key_reduction: margin_change_from_reduction,
-        result_key_reallocation: margin_change_from_reallocation,
-        "net_margin_impact": net_margin_impact
-    }
-    
-    return {"simulation_result": simulation_result}
-
-@mcp.tool()
-def simulate_financial_impact(
-    optimal_simulation_parameters: Dict[str, Any],
-    trim_performance_data: List[Dict[str, Any]],
     period: str = "1 quarter"
 ) -> Dict[str, Any]:
     """
