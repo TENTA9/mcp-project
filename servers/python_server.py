@@ -658,6 +658,23 @@ def generate_eol_purchase_order(
             "final_order_quantity": final_order_quantity
         }
     }
+    
+@mcp.tool()
+def get_forecasted_quantity(
+    campaign_uplift_qty: int,
+    baseline_forecast_mc: int,
+) -> int:
+    """
+    Calculates the forecasted quantity for a marketing campaign based on historical data.
+
+    Args:
+        campaign_uplift_qty (int): The uplift quantity expected from the campaign.
+        baseline_forecast_mc (int): The baseline forecast quantity from the Monte Carlo simulation.
+
+    Returns:
+        int: The forecasted quantity for the campaign.
+    """
+    return campaign_uplift_qty + baseline_forecast_mc
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")

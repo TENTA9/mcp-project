@@ -126,8 +126,7 @@ def read_products(product_id: str) -> List[Dict[str, Any]]:
         with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
             cur.execute(query, params)
             return cur.fetchall()
-
-@mcp.tool()
+        
 def evaluate_production_capacity(product_id: str, requested_qty: int, due_date: str) -> List[Dict[str, Any]]:
     """
     Checks if there is enough production capacity to produce a requested quantity of a product by a specific due date.
@@ -143,18 +142,15 @@ def evaluate_production_capacity(product_id: str, requested_qty: int, due_date: 
     """
     query = """
         WITH product_time AS (
-            -- 1. Products 테이블에서 제품 1개당 표준 생산 시간을 가져옵니다.
             SELECT standard_production_time_hours 
             FROM Products 
             WHERE product_id = %s
         ), available_capacity AS (
-            -- 2. Production_Capacity 테이블에서 오늘부터 마감일까지의 총 가용 시간을 합산합니다.
-            SELECT SUM(available_hours) as total_available_hours
+            SELECT COALESCE(SUM(available_hours), 0) as total_available_hours
             FROM Production_Capacity
-            WHERE capacity_date BETWEEN CURRENT_DATE AND %s
+            WHERE capacity_date BETWEEN '2025-07-24' AND %s
         )
         SELECT 
-            -- 3. 총 필요 시간과 총 가용 시간을 계산하고, 가능 여부를 비교합니다.
             pt.standard_production_time_hours * %s AS required_hours,
             ac.total_available_hours,
             (ac.total_available_hours >= pt.standard_production_time_hours * %s) AS is_capacity_available
@@ -623,6 +619,36 @@ def calculate_optimal_shift(
         }
     }
     return result
+
+@mcp.tool()
+def find_affected_products_by_component(component_id: str) -> Dict[str, Any]:
+    """
+    Finds all finished products that use a specific component and retrieves their end-of-service dates.
+
+    Args:
+        component_id: The ID of the component to check.
+
+    Returns:
+        A dictionary containing an 'affected_products' list. Each item in the list is a dictionary
+        with the 'product_id' and 'end_of_service_date'.
+    """
+    query = """
+        SELECT
+            p.product_id,
+            p.end_of_service_date
+        FROM
+            Bill_of_Materials bom
+        JOIN
+            Products p ON bom.product_id = p.product_id
+        WHERE
+            bom.component_id = %s;
+    """
+    params = (component_id,)
+    with PostgresConnection(DB_PARAMS) as conn:
+        with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cur:
+            cur.execute(query, params)
+            affected_products = cur.fetchall()
+            return {"affected_products": affected_products}
 
 @mcp.tool()
 def calculate_lifetime_demand(
